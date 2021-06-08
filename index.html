@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>A* Pathfinding</title>
+</head>
+
+<body>
+    <link rel="stylesheet" href="./styles.css">
+    <div id="toolbar">
+        <button onclick="pathfind()" class="button">Start!</button>
+        <button onclick="reDivMaze(tableWidth, tableHeight)" class="button">Generate Maze</button>
+        <button onclick="clearPath()" class="button">Clear Path</button>
+        <button onclick="init(tableWidth, tableHeight)" class="button">Clear Grid</button>
+    </div>
+    <div id="board">
+        <table id="table"></table>
+    </div>
+    <script src="astar2.js"></script>
+    <script src="rd.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
