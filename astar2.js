@@ -4,6 +4,7 @@ let start
 let end
 
 function init(width, height) {
+    clearInterval(loop)
     nodes = {}
     let gridHTML = ''
     for (let y = 0; y < height - 1; y++) {
