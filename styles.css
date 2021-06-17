@@ -54,25 +54,24 @@
     outline: 2px solid #2d3539;
     width: 20px;
     height: 20px;
+    animation-name: wall;
+    animation-duration: 0.3s;
 }
 
 @keyframes highlighted {
-    from { background: #ff0; }
-    to {background: #d6dde0;}
+    0% { background: #ff0; outline: 0px solid #fff;}
+    100% { background: #d6dde0; outline: 2px solid #c5cfd3;}
+}
+
+@keyframes wall {
+    0% { outline: 0px solid #e2e7e9; }
+    100% { outline: 2px solid #2d3539; }
 }
 
 @keyframes drawPath {
-    0% {outline: 2px solid #fff;}
-    10% {outline: 3px solid #fff;}
-    20% {outline: 4px solid #fff;}
-    30% {outline: 3.5px solid #fff;}
-    40% {outline: 3px solid #fff;}
-    50% {outline: 2px solid #fff;}
-    60% {outline: 1px solid #fff;}
-    70% {outline: 0.5px solid #fff;}
-    80% {outline: 0.3px solid #fff;}
-    90% {outline: 0.1px solid #fff;}
-    100% {outline: 0px solid #fff;}
+    0% { outline: 2px solid #fff; }
+    30% { outline: 5px solid #fff; }
+    100% { outline: 0px solid #fff; }
 }
 
 .start {
