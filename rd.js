@@ -17,10 +17,8 @@ function reDivMaze(width, height) {
 
         end ++
 
-        pos1 = pos1.split('_')
-        pos1 = [parseInt(pos1[0]), parseInt(pos1[1])]
-        pos2 = pos2.split('_')
-        pos2 = [parseInt(pos2[0]), parseInt(pos2[1])]
+        pos1 = pos1.split('_').map(x => parseInt(x))
+        pos2 = pos2.split('_').map(x => parseInt(x))
 
         const ABS_WIDTH = pos2[0] - pos1[0]
         let width = Math.floor((ABS_WIDTH + 1) / 2)
@@ -75,30 +73,27 @@ function reDivMaze(width, height) {
 
         drawLine(wallPos1, wallPos2, wallX, wallY, true, axis)
 
-        setTimeout(() => {
-            division(newReg1Pos1, newReg1Pos2, axis, iter)
-            setTimeout(() => {
-                division(newReg2Pos1, newReg2Pos2, axis, iter)
-                setTimeout(() => {
-                    end --
-                    toDraw.forEach(node => {
-                        const element = document.getElementById(node)
-                        if (element.className != 'start' && element.className != 'end') {
-                            nodes[node].class = 'wall'
-                            element.className = 'wall'
-                        }
-                    })
-                }, 10)
-            }, 10)
-        }, 10)
-
+        division(newReg1Pos1, newReg1Pos2, axis, iter)
+        division(newReg2Pos1, newReg2Pos2, axis, iter)
+        end --
+        if (!end) {
+            let i = 0
+            let drawLoop = setInterval(() => {
+                if (i >= toDraw.length) return clearInterval(drawLoop)
+                const node = toDraw[i]
+                const element = document.getElementById(node)
+                if (element.className != 'start' && element.className != 'end') {
+                    nodes[node].class = 'wall'
+                    element.className = 'wall'
+                }
+                i ++
+            }, 4)
+        }
     }
 
     function drawLine(pos1, pos2, wallX, wallY, open, axis) {
-        pos1 = pos1.split('_')
-        pos1 = [parseInt(pos1[0]), parseInt(pos1[1])]
-        pos2 = pos2.split('_')
-        pos2 = [parseInt(pos2[0]), parseInt(pos2[1])]
+        pos1 = pos1.split('_').map(x => parseInt(x))
+        pos2 = pos2.split('_').map(x => parseInt(x))
     
         let dX = pos2[0] - pos1[0]
         let dY = pos2[1] - pos1[1]
